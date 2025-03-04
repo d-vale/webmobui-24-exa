@@ -1,0 +1,16 @@
+{
+  "short_name": "Anirdo",
+  "name": "Anirdo - Proudly made by the HEIG24 group",
+  "icons": [
+    {
+      "src": "images/logo-anirdo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#121212",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#121212"
+}
