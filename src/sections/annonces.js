@@ -2,9 +2,12 @@ import { loadAnnonces } from "../api";
 import '../elements/annonce-item';
 
 const annoncesContainer = document.querySelector("div.annonces");
+const annoncesTitle = document.querySelector("#section-annonces h4")
 
 const displayAnnonces = async () => {
     const annonces = await loadAnnonces;
+
+    annoncesTitle.textContent = `Dernières annonces (${annonces.length})`;
 
     annoncesContainer.innerHTML = "";
 
