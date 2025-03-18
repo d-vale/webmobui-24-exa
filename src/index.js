@@ -1,5 +1,5 @@
 import { displaySection, activateLink } from './helpers.js'
-import { displayLatestAnnonce, displayCategorieAnnonce } from './sections/annonces.js'
+import { displayLatestAnnonce, displayCategorieAnnonce, displayDetailAnonce, displayFavorites} from './sections/annonces.js'
 import { displayCategorie } from './sections/categorie.js'
 
 const routeur = () => {
@@ -27,10 +27,16 @@ const routeur = () => {
 
     case '#starred':
       displaySection('annonces')
+      displayFavorites();
       break;
 
     case '#account':
       displaySection('account')
+      break;
+
+    case '#annonce':
+      displaySection('annonce-details')
+      displayDetailAnonce(hashs[1])
       break;
   }
 }
@@ -40,3 +46,5 @@ window.addEventListener('hashchange', routeur)
 
 // on exécute une première fois au chargement de la page pour afficher la bonne section
 routeur()
+
+navigator.serviceWorker.register('/service-worker.js');

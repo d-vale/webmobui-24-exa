@@ -1,3 +1,5 @@
+const starClick = new CustomEvent('star_click');
+
 class AnnonceItem extends HTMLElement {
 
     static observedAttributes = ['star']
@@ -23,7 +25,13 @@ class AnnonceItem extends HTMLElement {
               <div class="annonces__element__title">${this.getAttribute('title')}</div>
               <div class="annonces__element__price">${this.getAttribute('price')}-</div>
             </a>
-      `
+      `;
+
+      this.querySelector('.starred-button').addEventListener('click', (e) => {
+        e.preventDefault()
+        this.dispatchEvent(starClick)
+      })
+      
     }
 }
 
