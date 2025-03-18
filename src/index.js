@@ -1,5 +1,5 @@
 import {displaySection, activateLink} from './helpers.js'
-
+import { displayAnnonces } from './sections/annonces.js'
 
 const routeur = () => {
   const hash = window.location.hash || '#home'
@@ -11,6 +11,7 @@ const routeur = () => {
   switch(hashs[0]) {
     case '#latest':
         displaySection('annonces')
+        displayAnnonces();
     break;
 
     case '#categories':
