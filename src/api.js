@@ -7,4 +7,6 @@ const loadAnnonces = await loadJson(`${BASE_URL}/api/annonces`)
 
 const loadCategories = await loadJson(`${BASE_URL}/api/categories`)
 
-export {loadAnnonces, loadCategories};
+const loadAnonceCategories = async (id) => await loadJson(`${BASE_URL}/api/categories/${id}/annonces`)
+
+export {loadAnnonces, loadCategories, loadAnonceCategories};

@@ -1,17 +1,14 @@
-import { loadAnnonces } from "../api";
+import { loadAnnonces, loadAnonceCategories } from "../api";
 import '../elements/annonce-item';
 
 const annoncesContainer = document.querySelector("div.annonces");
 const annoncesTitle = document.querySelector("#section-annonces h4")
 
-const displayAnnonces = async () => {
-    const annonces = await loadAnnonces;
+const displayAnnoncesArray = (annonceArray) => {
 
-    annoncesTitle.textContent = `Dernières annonces (${annonces.length})`;
-
+    annoncesTitle.textContent = `Dernières annonces (${annonceArray.length})`;
     annoncesContainer.innerHTML = "";
-
-    await annonces.forEach(el => {
+    annonceArray.forEach(el => {
 
         const annonce = document.createElement('annonce-item');
 
@@ -24,4 +21,14 @@ const displayAnnonces = async () => {
     });
 }
 
-export { displayAnnonces };
+const displayLatestAnnonce = async () =>{
+    const annonces = await loadAnnonces;
+    displayAnnoncesArray(annonces);
+}
+
+const displayCategorieAnnonce = async (id) => {
+    const annonces = await loadAnonceCategories(id)
+    displayAnnoncesArray(annonces);
+ }
+
+export { displayLatestAnnonce, displayCategorieAnnonce };

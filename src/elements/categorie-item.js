@@ -9,7 +9,7 @@ class CategorieItem extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `<a href="categorie-${this.getAttribute('id')}">
+        this.innerHTML = `<a href="#categories-${this.getAttribute('id')}">
             <img src="${this.getAttribute('icon_url')}"  class="categories__box__icon" />
 
             <div class="categories__box__name">${this.getAttribute('name')}</div>

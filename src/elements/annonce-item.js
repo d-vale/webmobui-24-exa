@@ -18,7 +18,7 @@ class AnnonceItem extends HTMLElement {
                 <span class="material-icons">${icon}</span>
               </button>
             </div>
-            <a href="annonce-${this.getAttribute('id')}">
+            <a href="#annonce-${this.getAttribute('id')}">
               <img class="annonces__element__image" src="${this.getAttribute('image_url')}" />
               <div class="annonces__element__title">${this.getAttribute('title')}</div>
               <div class="annonces__element__price">${this.getAttribute('price')}-</div>

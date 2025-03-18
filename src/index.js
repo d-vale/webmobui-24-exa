@@ -1,5 +1,5 @@
-import {displaySection, activateLink} from './helpers.js'
-import { displayAnnonces } from './sections/annonces.js'
+import { displaySection, activateLink } from './helpers.js'
+import { displayLatestAnnonce, displayCategorieAnnonce } from './sections/annonces.js'
 import { displayCategorie } from './sections/categorie.js'
 
 const routeur = () => {
@@ -9,24 +9,29 @@ const routeur = () => {
   // Colorie le lien
   activateLink(hashs[0])
 
-  switch(hashs[0]) {
+  switch (hashs[0]) {
     case '#latest':
-        displaySection('annonces')
-        displayAnnonces();
-    break;
+      displaySection('annonces')
+      displayLatestAnnonce();
+      break;
 
     case '#categories':
-      displaySection('categories')
-      displayCategorie();
-    break;
+      if (hashs[1]) {
+        displaySection('annonces')
+        displayCategorieAnnonce(hashs[1])
+      } else {
+        displaySection('categories')
+        displayCategorie()
+      }
+      break;
 
     case '#starred':
       displaySection('annonces')
-    break;
+      break;
 
     case '#account':
       displaySection('account')
-    break;
+      break;
   }
 }
 
