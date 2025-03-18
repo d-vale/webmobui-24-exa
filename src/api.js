@@ -5,5 +5,6 @@ const loadJson = (url) => fetch(url).then((response) => response.json())
 
 const loadAnnonces = await loadJson(`${BASE_URL}/api/annonces`)
 
+const loadCategories = await loadJson(`${BASE_URL}/api/categories`)
 
-export {loadAnnonces};
+export {loadAnnonces, loadCategories};
