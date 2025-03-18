@@ -6,4 +6,4 @@
 .DS_Store
 .tool-versions
 package-lock.json
-.pdf
+*.pdf
