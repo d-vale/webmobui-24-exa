@@ -1,6 +1,6 @@
 import { loadAnnonces, loadAnonceCategories, loadDetailAnnonce } from "../api";
 import '../elements/annonce-item';
-import {setItem, getItem, getItems, removeItem} from '../lib/local-storage';
+import { setItem, getItem, getItems, removeItem } from '../lib/local-storage';
 
 //Annonces cover
 const annoncesContainer = document.querySelector("div.annonces");
@@ -13,7 +13,7 @@ const detailsDescription = document.querySelector(".annonce-details-section-deta
 const detailImage = document.querySelector("#section-annonce-details > img");
 
 
-const displayAnnoncesArray = (annonceArray) => {
+const displayAnnoncesArray = (annonceArray, isStarredView = false) => {
 
     annoncesTitle.textContent = `Dernières annonces (${annonceArray.length})`;
     annoncesContainer.innerHTML = "";
@@ -30,10 +30,16 @@ const displayAnnoncesArray = (annonceArray) => {
         annonce.addEventListener('star_click', () => {
             if (getItem(el.id)) {
                 removeItem(el.id)
+
+                // Si on est dans la vue des favoris, on retire l'élément de la vue
+                if (isStarredView) {
+                    displayFavorites();
+                }
+
             } else {
                 setItem(el.id, el)
             }
-            
+
             annonce.setAttribute('star', !!getItem(el.id))
         })
 
@@ -61,7 +67,7 @@ const displayDetailAnonce = async (id) => {
 
 const displayFavorites = () => {
     const favorites = getItems();
-    displayAnnoncesArray(favorites);
+    displayAnnoncesArray(favorites, true);
     annoncesTitle.textContent = `Intéressantes (${favorites.length})`;
 }
 export { displayLatestAnnonce, displayCategorieAnnonce, displayDetailAnonce, displayFavorites };
